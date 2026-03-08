@@ -1,0 +1,7 @@
+{
+  "per_ticker": {
+    "tqqq": { "rsi": 65, "bbl": 1.14 },
+    "soxl": { "rsi": 60, "bbl": 1.08 }
+  },
+  "notes": "Automatically generated thresholds for TQQQ and SOXL. Set 'per_ticker' to apply on script start."
+}

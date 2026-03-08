@@ -1,0 +1,122 @@
+[
+  {
+    "rsi": 60,
+    "bbl": 1.05,
+    "apy": 0.030757131002426386,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 61,
+    "max_dd": -0.21146728147065652,
+    "win_rate": 0.39344262295081966
+  },
+  {
+    "rsi": 55,
+    "bbl": 1.05,
+    "apy": 0.02516117334069512,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 57,
+    "max_dd": -0.21406432445183665,
+    "win_rate": 0.38596491228070173
+  },
+  {
+    "rsi": 60,
+    "bbl": 1.04,
+    "apy": 0.015907366717661686,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 45,
+    "max_dd": -0.17623957698133041,
+    "win_rate": 0.4222222222222222
+  },
+  {
+    "rsi": 55,
+    "bbl": 1.03,
+    "apy": 0.007892012112231894,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 33,
+    "max_dd": -0.16574930234359309,
+    "win_rate": 0.3939393939393939
+  },
+  {
+    "rsi": 60,
+    "bbl": 1.03,
+    "apy": 0.0075831172725591145,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 35,
+    "max_dd": -0.1709463847213124,
+    "win_rate": 0.37142857142857144
+  },
+  {
+    "rsi": 55,
+    "bbl": 1.04,
+    "apy": 0.0038640264672635816,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 41,
+    "max_dd": -0.20221028970355437,
+    "win_rate": 0.3902439024390244
+  },
+  {
+    "rsi": 40,
+    "bbl": 1.0,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 40,
+    "bbl": 1.03,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 40,
+    "bbl": 1.04,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 40,
+    "bbl": 1.05,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 55,
+    "bbl": 1.0,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 60,
+    "bbl": 1.0,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  }
+]

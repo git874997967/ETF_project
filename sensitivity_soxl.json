@@ -1,0 +1,302 @@
+[
+  {
+    "rsi": 30,
+    "bbl": 0.95,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 30,
+    "bbl": 0.96,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 30,
+    "bbl": 0.97,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 30,
+    "bbl": 0.98,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 30,
+    "bbl": 0.99,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 30,
+    "bbl": 1.0,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 35,
+    "bbl": 0.95,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 35,
+    "bbl": 0.96,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 35,
+    "bbl": 0.97,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 35,
+    "bbl": 0.98,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 35,
+    "bbl": 0.99,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 35,
+    "bbl": 1.0,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 40,
+    "bbl": 0.95,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 40,
+    "bbl": 0.96,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 40,
+    "bbl": 0.97,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 40,
+    "bbl": 0.98,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 40,
+    "bbl": 0.99,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 40,
+    "bbl": 1.0,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 45,
+    "bbl": 0.95,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 45,
+    "bbl": 0.96,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 45,
+    "bbl": 0.97,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 45,
+    "bbl": 0.98,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 45,
+    "bbl": 0.99,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 45,
+    "bbl": 1.0,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 50,
+    "bbl": 0.95,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 50,
+    "bbl": 0.96,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 50,
+    "bbl": 0.97,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 50,
+    "bbl": 0.98,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 50,
+    "bbl": 0.99,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  },
+  {
+    "rsi": 50,
+    "bbl": 1.0,
+    "apy": 0.0,
+    "apy_cost_0.001": null,
+    "apy_cost_0.002": null,
+    "num_trades": 0,
+    "max_dd": 0.0,
+    "win_rate": null
+  }
+]
