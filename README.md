@@ -19,19 +19,58 @@
 
 ### v3: 类封装与命令行入口
 - 将策略逻辑封装到 `StrategyEngine` 类中，支持可配置的父/子映射、Dual-Mode 信号、SQN 计算等。
-- 提供轻量 CLI (`operation_prediction_v3.py`) 支持 `run` 和 `sensitivity` 子命令，并可导出 JSON。****
+- 提供轻量 CLI (`operation_prediction_v3.py`) 支持 `run` 和 `sensitivity` 子命令，并可导出 JSON。
 - 保持与 v2 兼容的 wrapper 函数以便渐进迁移。
-- 准备后续添加 SQN 驱动筛选、DCA 分批建仓、ATR 头寸调整等功能。
+- **2026-03-07 更新**：多 Ticker 支持、safe_external 异常保护、输出人性化（布林上轨/MA50、DCA 动态数据、APY 百分比、建议仓位修正）、Windows 控制台编码兼容。
 
 ## 时间管理与更新记录
 
-- 最后更新：2026-02-28
+- 最后更新：2026-03-07
 - 版本时间线（请在发布时补充或维护）：
   - v1: 初始 RSI 实验 — (日期: 2026-02-27)
   - v2: 多指标 + 网格参数化 — (日期: 2026-02-27)
   - v3: 类封装与 CLI — (创建日期: 2026-02-28)
+  - v3.1: 多 Ticker、稳健性、输出人性化 — (日期: 2026-03-07)
 
 - 建议：每次重大变更（新增指标、变更回测窗口、调整成本模型）请在此记录变更理由与影响，以便回溯与审计。
+
+---
+
+## Changelog — 2026-03-07
+
+> 本次更新使 `operation_prediction_v3.py` 更稳健、输出更人性化，并为后续作为 Web App 后端做准备。供团队 review 与讨论下一步细节。
+
+### 1. 多 Ticker 支持
+
+- **`--ticker`** 支持多个标的，例如：`--ticker tqqq soxl sqqq soxs`
+- **返回值** 改为 JSON 列表格式，每个 ticker 对应一个对象
+- **sensitivity** 子命令同样支持多 ticker，结果中增加 `ticker` 字段
+
+### 2. 稳健性增强
+
+- **`get_underlying`**：未映射 ETF 返回 `levered.upper()`，保证 ticker 全大写
+- **`safe_external` 装饰器**：统一包装 `yf.download`、日期解析、JSON 读写，失败时返回默认值或重新抛出
+- VIX 下载失败时用 NaN 填充，策略继续运行
+
+### 3. 输出人性化调整
+
+| 项 | 说明 |
+|----|------|
+| 布林上軌、MA50 | 新增 `bbu_20_2.0`、`ema_slow_50` 到 UI_Summary |
+| DCA 动态数据 | 當前RSI、當前風險因子、RSI<55/RSI<45 的实际建仓比例 |
+| APY / Total_Return | 格式化为 `"2.53%"`、`"28.96%"` 字符串 |
+| 建议仓位 | 使用 `max(Position, Suggested_Size)` 解决持仓日显示 0% 问题 |
+| Windows 编码 | 先 save 再 print，捕获 UnicodeEncodeError 时 fallback 到 ensure_ascii |
+
+### 4. 待讨论：Web App 后端扩展
+
+作为 API 返回给前端时，可考虑增加：
+
+1. **`meta`**：`generated_at`、`data_range` 等元数据
+2. **`chart_data`**：精简历史数据（日期、价格、净值、仓位），供前端绘图
+3. **`metrics`**：Sharpe、最大回撤、交易次数、胜率等策略指标
+4. **`action_hint`**：简短操作提示（如「等待 RSI < 55 且牛市確認」）
+5. **`signal_badge` / `trend_icon`**：前端展示用的样式/图标建议
 
 ## 当前功能概述
 （此处保留原来的 v2 描述，略作调整以反映最新状态）
@@ -55,8 +94,18 @@
 若使用新版引擎，可调用 `operation_prediction_v3.py`：
 
 ```powershell
+# 单 ticker
 python operation_prediction_v3.py run --ticker tqqq --rsi 40 --bbl 1.02
 python operation_prediction_v3.py sensitivity --ticker soxl --rsi 30 --bbl 1.00
+
+# 多 ticker（返回 JSON 列表）
+python operation_prediction_v3.py run --ticker tqqq soxl --out result.json
+```
+
+使用 venv（Python 3.11）：
+
+```powershell
+.\venv_ta\Scripts\python.exe operation_prediction_v3.py run --ticker tqqq soxl --out result.json
 ```
 
 这两个命令分别执行一次完整回测或简单的阈值敏感度查看，输出 JSON 结果并可通过 `--out` 保存文件。
@@ -89,6 +138,9 @@ python operation_prediction_v3.py sensitivity --ticker soxl --rsi 30 --bbl 1.00
 
 ## 文件说明
 - `operation_prediction_v2.py`：主脚本，包含策略、网格搜索、稳健性分析、以及打印/应用结果。
+- `operation_prediction_v3.py`：v3 策略引擎 CLI，支持多 Ticker、DCA、ATR/VIX 风险调节，输出 JSON 供 API 或前端调用。
+- `src/main.py`：MA200 vs GMMA 对比回测实验脚本。
+- `CHANGELOG_2026-03-07.md`：2026-03-07 更新详情（已合并至本文 Changelog 章节）。
 - `README.md`：当前文件，包含使用与调优建议。
 
 ## 未来计划
