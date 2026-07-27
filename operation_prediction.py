@@ -3,6 +3,50 @@ import pandas_ta as ta
 import numpy as np
 import yfinance as yf
 
+
+def add_gmma_filter(
+    df,
+    fast_periods=(3, 5, 8, 10, 12),
+    slow_periods=(30, 35, 40, 50, 60),
+    lookback=3,
+):
+    """
+    GMMA bullish confirmation filter.
+    BUY is allowed only when:
+    - fast GMMA slope > 0
+    - slow GMMA slope > 0
+    - GMMA spread slope > 0
+    """
+    df = df.copy()
+
+    price_col = "close" if "close" in df.columns else "Close"
+    close = df[price_col]
+
+    fast_avg = pd.concat(
+        [close.ewm(span=p, adjust=False).mean() for p in fast_periods],
+        axis=1
+    ).mean(axis=1)
+
+    slow_avg = pd.concat(
+        [close.ewm(span=p, adjust=False).mean() for p in slow_periods],
+        axis=1
+    ).mean(axis=1)
+
+    df["gmma_fast_avg"] = fast_avg
+    df["gmma_slow_avg"] = slow_avg
+    df["gmma_fast_slope"] = fast_avg.diff(lookback)
+    df["gmma_slow_slope"] = slow_avg.diff(lookback)
+    df["gmma_spread"] = fast_avg - slow_avg
+    df["gmma_spread_slope"] = df["gmma_spread"].diff(lookback)
+
+    df["gmma_confirmed"] = (
+        (df["gmma_fast_slope"].fillna(0) > 0)
+        & (df["gmma_slow_slope"].fillna(0) > 0)
+        & (df["gmma_spread_slope"].fillna(0) > 0)
+    ).fillna(False).astype(bool)
+
+    return df
+
 def normalize_columns(df):
     """将 DataFrame 列名统一转换为小写字符串。
     对于 MultiIndex 会先取第一级再小写。
@@ -94,6 +138,9 @@ def run_vectorized_backtest(ticker, start_date="2024-01-01", end_date="2026-02-2
     df.columns = [c.lower() if isinstance(c, str) else c for c in df.columns]
     rsi_col = 'rsi_14'
 
+    # GMMA filter: add column 'gmma_confirmed' used to gate buy signals
+    df = add_gmma_filter(df)
+
     # 额外：基于 RSI 生成每日信号并计算准确率
     df['次日交易信号'] = np.where(df[rsi_col] < 30, '买入',
                                   np.where(df[rsi_col] > 70, '卖出', '观望'))
@@ -122,7 +169,7 @@ def run_vectorized_backtest(ticker, start_date="2024-01-01", end_date="2026-02-2
     # 这里我们使用 shift() 来模拟简单的状态传递或使用 ta.xsignals
     
     # === 简单逻辑：RSI < 30 买入次日开盘，RSI > 70 卖出次日开盘 ===
-    buy_signal = (df[rsi_col] < 30)
+    buy_signal = (df[rsi_col] < 30) & (df['gmma_confirmed'].fillna(False))
     卖出_signal = (df[rsi_col] > 70)
     
     # 使用 ffill() 填充持仓状态 (Forward Fill)
@@ -200,6 +247,8 @@ def run_tiered_backtest(leverage_ticker, start_date="2024-01-01", end_date="2026
 
     # 清洗 NaN 并复制以避免后续赋值警告
     df_u = df_u.dropna().copy()
+    # 在基础ETF上添加 GMMA 验证，当 gmma_confirmed=False 时拦截买入信号
+    df_u = add_gmma_filter(df_u)
 
     # 原子条件
     rsi_col = 'rsi_14'
@@ -210,7 +259,7 @@ def run_tiered_backtest(leverage_ticker, start_date="2024-01-01", end_date="2026
 
     # 如果 ADX>30 且正在上行，则认为为强趋势，此时不应使用 RSI 反转策略
     disable_rsi = (df_u[adx_col] > 30) & (df_u[adx_col].diff() > 0)
-    cond_oversold = (df_u[rsi_col] < 30) & (~disable_rsi)
+    cond_oversold = (df_u[rsi_col] < 30) & (~disable_rsi) & (df_u['gmma_confirmed'].fillna(False))
     cond_breakout = (df_u['close'] < df_u[bbl_col])
     cond_bull_trend = (df_u['close'] > df_u[sma_col])
 
